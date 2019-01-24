@@ -11,30 +11,26 @@ public class calcularMediaAlumnops {
 		calcularMediaAlumnops c =new calcularMediaAlumnops();
 		c.calcularMedia(f);
 	}
-	public void inici() {
-		double valores = 0;
+	public double calcularMedia(File v) {
+		double valores = 0,media=0;
 		int val =  0;
 		try {
-			Scanner lector = new Scanner(f);
+			Scanner lector = new Scanner(v);
 			// Aquesta estrategia es basa en un semafor
-			boolean llegir = true;
+			boolean llegir = false;
 			// Si s'executa aquesta instrucci, s'ha obert el fitxer
-			while (llegir) {
+			while (!llegir) {
 				String valor = lector.nextLine();
 				String [] pal = valor.split(" ");
 				if (valor == "fi") {
 					// Marca de finalitzaci  Ja s'ha acabat la lectura
-					llegir = false;
+					llegir = true;
 				}else {
-					double suma=0,media=0;
-					// Encara no s'ha acabat. Tractar dada
-					System.out.println(valor + " ");
-					System.out.println("--------------------");
+					double suma=0;
 					for(int i =0 ; i<pal.length;i++) {
 						val= Integer.parseInt(pal[2]);
 						if(i>2) {
 							valores= Double.parseDouble(pal[i]);
-							System.out.println("nota--->"+valores);
 							suma = suma+valores;
 							media = suma /val;
 						}
@@ -45,40 +41,15 @@ public class calcularMediaAlumnops {
 			// Cal tancar el fitxer
 			lector.close();
 		} catch (Exception e) {
-			System.out.println("Error: " + e);
+			e.printStackTrace();
 		}
+		return media;
 	}
-	//	public double calcularMedia(File v) {
-	//		double media = 0,suma =0;
-	//		boolean salir = false;
-	//		try {
-	//			Scanner scan = new Scanner(v);
-	//			String texto = scan.next();
-	//			while (!salir) {
-	//				if (texto.equals("fi")) {
-	//					salir=true;
-	//				}else {
-	//					if (scan.hasNextInt()) {
-	//						System.out.println("Hola");
-	//						if (texto.equals("-1")) {
-	//							System.out.println();
-	//						}
-	//					}else {
-	//						scan.next();
-	//					}
-	//				}
-	//			}
-	//			scan.close();
-	//		} catch (Exception e) {
-	//			e.printStackTrace();
-	//		}
-	//		return media; 
-	//	}
-	//	public static String leerString() {
-	//		Scanner scan = new Scanner(System.in);
-	//		String palabra = "";
-	//		palabra = scan.nextLine();
-	//		scan.close();
-	//		return palabra;
-	//	}
+	public static String leerString() {
+		Scanner scan = new Scanner(System.in);
+		String palabra = "";
+		palabra = scan.nextLine();
+		scan.close();
+		return palabra;
+	}
 }
