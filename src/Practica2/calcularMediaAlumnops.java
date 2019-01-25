@@ -11,6 +11,7 @@ public class calcularMediaAlumnops {
 		calcularMediaAlumnops c =new calcularMediaAlumnops();
 		c.calcularMedia(f);
 	}
+<<<<<<< HEAD
 	public double calcularMedia(File v) {
 		double valores = 0,media=0;
 		int val =  0;
@@ -44,6 +45,44 @@ public class calcularMediaAlumnops {
 			e.printStackTrace();
 		}
 		return media;
+=======
+	public static void  calcularMedia(File v) {
+		double media = 0,suma=0;
+		int valor =0;
+		int cont =0;
+		try {
+			Scanner scan = new Scanner(v);
+			boolean salir  =false;
+			while (!salir) {
+				String texto =  scan.nextLine();
+				String [] linea= texto.split(" ");
+				if (texto.equalsIgnoreCase("fi")) {
+					salir=true;
+				}else {
+					for (int i = 0; i < linea.length; i++) {						
+						if (isNumeric(linea[i])) {
+							double valores = Double.parseDouble(linea[i]);
+							cont++;
+							suma = suma+valores;
+							media = suma /cont;
+						}
+					}
+					System.out.println("Media --> "+media );
+				}
+			}
+			scan.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	public static boolean isNumeric(String cadena) {
+	    try {
+	        double d = Double.parseDouble(cadena);
+	    } catch (NumberFormatException | NullPointerException nfe) {
+	        return false;
+	    }
+	    return true;
+>>>>>>> Practica2
 	}
 	public static String leerString() {
 		Scanner scan = new Scanner(System.in);
