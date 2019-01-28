@@ -18,23 +18,32 @@ public class EscribirFicheroMediaAlumnos {
 		//File donde vamos a escribir el contenido del otro fichero 
 		File vf= new File(name_file);
 		String texto = "";
+		Scanner scan = null;
+		PrintStream ps = null;
+		
 		try {
-			Scanner scan  = new Scanner(v);
-			PrintStream ps = new PrintStream(vf);
+			scan  = new Scanner(v);
+			ps = new PrintStream(vf);
 			boolean salir =false;
-			
+
 			while (!salir) {
 				texto = scan.nextLine();
-				if (texto.equals("fi")) {
-					salir=true;
-				}else {
-						
+				String linea[]= texto.split("",1);
+				for (int i = 0; i < linea.length; i++) {
+					ps.print(linea[i]+" ");
+					if (texto.equals("fi")) {
+						salir=true;
+					}
+					ps.println();
 				}
 			}
+			System.out.println("Fichero Escrito ");
 		} catch (Exception e) {
 			System.out.println("Error!! " + e);
 		}
-		
-		
+		ps.close();
+		scan.close();
+
+
 	}
 }
