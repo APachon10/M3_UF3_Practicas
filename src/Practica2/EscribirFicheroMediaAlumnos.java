@@ -33,6 +33,8 @@ public class EscribirFicheroMediaAlumnos {
 					ps.print(linea[i]+" ");
 					if (texto.equals("fi")) {
 						salir=true;
+					}else {
+						ps.append("-1");
 					}
 					ps.println();
 				}
