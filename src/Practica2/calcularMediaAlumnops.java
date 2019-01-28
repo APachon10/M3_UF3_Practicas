@@ -18,6 +18,7 @@ public class calcularMediaAlumnops {
 			scan = new Scanner(v);
 			boolean salir  =false;
 			while (!salir) {
+				cont =0;
 				String texto =  scan.nextLine();
 				String [] linea= texto.split(" ");
 				if (texto.equalsIgnoreCase("fi")) {
@@ -25,8 +26,7 @@ public class calcularMediaAlumnops {
 				}else {
 					for (int i = 0; i < linea.length; i++) {
 						if (i>2 && isNumeric(linea[i])) {
-							double valores = Double.parseDouble(linea[i]);
-							System.out.println("Valores:" +valores );
+							double	valores = Double.parseDouble(linea[i]);
 							cont++;
 							suma = suma+valores;
 							media = suma /cont;
@@ -37,10 +37,10 @@ public class calcularMediaAlumnops {
 			}
 			scan.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error" + e);
 		}
 		scan.close();
-		
+
 	}
 	public static boolean isNumeric(String cadena) {
 		try {
