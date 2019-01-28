@@ -45,7 +45,5 @@ public class EscribirFicheroMediaAlumnos {
 		}
 		ps.close();
 		scan.close();
-
-
 	}
 }
