@@ -11,7 +11,7 @@ public class calcularMediaAlumnops {
 		c.calcularMedia(f);
 	}
 	public void  calcularMedia(File v) {
-		double media = 0,suma=0;
+		double media = 0,suma=0,valores =0;
 		int cont =0;
 		Scanner scan = null;
 		try {
@@ -19,14 +19,15 @@ public class calcularMediaAlumnops {
 			boolean salir  =false;
 			while (!salir) {
 				cont =0;
+				suma =0;
 				String texto =  scan.nextLine();
 				String [] linea= texto.split(" ");
 				if (texto.equalsIgnoreCase("fi")) {
 					salir=true;
 				}else {
 					for (int i = 0; i < linea.length; i++) {
-						if (i>2 && isNumeric(linea[i])) {
-							double	valores = Double.parseDouble(linea[i]);
+						if(i>2 && isNumeric(linea[i])) {
+							valores= Double.parseDouble(linea[i]);
 							cont++;
 							suma = suma+valores;
 							media = suma /cont;
