@@ -25,7 +25,7 @@ public class calcularMediaAlumnops {
 					salir=true;
 				}else {
 					for (int i = 0; i < linea.length; i++) {						
-						if (isNumeric(linea[i])) {
+						if (i>2 && isNumeric(linea[i])) {
 							double valores = Double.parseDouble(linea[i]);
 							cont++;
 							suma = suma+valores;
@@ -41,12 +41,12 @@ public class calcularMediaAlumnops {
 		}
 	}
 	public static boolean isNumeric(String cadena) {
-	    try {
-	        double d = Double.parseDouble(cadena);
-	    } catch (NumberFormatException | NullPointerException nfe) {
-	        return false;
-	    }
-	    return true;
+		try {
+			double d = Double.parseDouble(cadena);
+		} catch (NumberFormatException | NullPointerException nfe) {
+			return false;
+		}
+		return true;
 	}
 	public static String leerString() {
 		Scanner scan = new Scanner(System.in);
