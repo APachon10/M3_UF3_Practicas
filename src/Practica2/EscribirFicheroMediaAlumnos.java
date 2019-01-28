@@ -9,41 +9,54 @@ public class EscribirFicheroMediaAlumnos {
 		//Objeto con el cual llamaremos a la funcion 
 		EscribirFicheroMediaAlumnos es = new EscribirFicheroMediaAlumnos();
 		//Variables que le enviaremos al metodo 
-		File f = new File("MediaAlumnos.txt");
 		String nombre_Fichero = "NotaMitja.txt";
 		//Llamamos al Metodo 
-		es.escribirFichero(f, nombre_Fichero);
+		es.escribirFichero(nombre_Fichero);
 	}
-	public void escribirFichero(File v,String name_file) {
+	public void escribirFichero(String name_file) {
 		//File donde vamos a escribir el contenido del otro fichero 
 		File vf= new File(name_file);
 		String texto = "";
 		Scanner scan = null;
-		PrintStream ps = null;
-		
-		try {
-			scan  = new Scanner(v);
-			ps = new PrintStream(vf);
-			boolean salir =false;
+		double suma=0,media=0,valores=0;
+		int cont=0;
 
+		try {
+			scan  = new Scanner(vf);
+			boolean salir =false;
 			while (!salir) {
+				//Ponemos a 0 la suma y el contador al iniciar el bucle para que se reinicie al llegar a la siguiente linea 
+				cont =0;
+				suma=0;
+				//Leemos el contenido del fichero 
 				texto = scan.nextLine();
-				String linea[]= texto.split("",1);
-				for (int i = 0; i < linea.length; i++) {
-					ps.print(linea[i]+" ");
-					if (texto.equals("fi")) {
-						salir=true;
-					}else {
-						ps.append("-1");
+				String [] linea = texto.split(" ");
+				if (texto.equals("fi")) {
+					salir=true;
+				}else {
+					for (int i = 0; i < linea.length; i++) {
+						if (isNumeric(linea[i]) && !linea[i].equals("-1")) {
+							valores= Double.parseDouble(linea[i]);
+							cont++;
+							suma = suma+valores;
+							media = suma /cont;
+						}
 					}
-					ps.println();
+					System.out.println("Media --> "+ media);
 				}
 			}
-			System.out.println("Fichero Escrito ");
+			
 		} catch (Exception e) {
 			System.out.println("Error!! " + e);
 		}
-		ps.close();
 		scan.close();
+	}
+	public static boolean isNumeric(String cadena) {
+		try {
+			double d = Double.parseDouble(cadena);
+		} catch (NumberFormatException | NullPointerException nfe) {
+			return false;
+		}
+		return true;
 	}
 }
