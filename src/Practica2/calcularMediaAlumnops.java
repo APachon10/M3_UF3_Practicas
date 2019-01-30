@@ -1,7 +1,6 @@
 package Practica2;
 
 import java.io.File;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class calcularMediaAlumnops {
@@ -11,22 +10,24 @@ public class calcularMediaAlumnops {
 		calcularMediaAlumnops c =new calcularMediaAlumnops();
 		c.calcularMedia(f);
 	}
-	public static void  calcularMedia(File v) {
-		double media = 0,suma=0;
-		int valor =0;
+	public void  calcularMedia(File v) {
+		double media = 0,suma=0,valores =0;
 		int cont =0;
+		Scanner scan = null;
 		try {
-			Scanner scan = new Scanner(v);
+			scan = new Scanner(v);
 			boolean salir  =false;
 			while (!salir) {
+				cont =0;
+				suma =0;
 				String texto =  scan.nextLine();
 				String [] linea= texto.split(" ");
 				if (texto.equalsIgnoreCase("fi")) {
 					salir=true;
 				}else {
-					for (int i = 0; i < linea.length; i++) {						
-						if (isNumeric(linea[i])) {
-							double valores = Double.parseDouble(linea[i]);
+					for (int i = 0; i < linea.length; i++) {
+						if(i>2 && isNumeric(linea[i])) {
+							valores= Double.parseDouble(linea[i]);
 							cont++;
 							suma = suma+valores;
 							media = suma /cont;
@@ -37,16 +38,18 @@ public class calcularMediaAlumnops {
 			}
 			scan.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("Error" + e);
 		}
+		scan.close();
+
 	}
 	public static boolean isNumeric(String cadena) {
-	    try {
-	        double d = Double.parseDouble(cadena);
-	    } catch (NumberFormatException | NullPointerException nfe) {
-	        return false;
-	    }
-	    return true;
+		try {
+			double d = Double.parseDouble(cadena);
+		} catch (NumberFormatException | NullPointerException nfe) {
+			return false;
+		}
+		return true;
 	}
 	public static String leerString() {
 		Scanner scan = new Scanner(System.in);
