@@ -15,16 +15,8 @@ public class PedirDatosPersona {
 	public void escribirFichero(File x) {
 		boolean salir =false;
 		String confirmacion = "";
-<<<<<<< HEAD
-		//Variabldes de la persona 
-		String name,surname,NIF,height;
-		int age;
-=======
 		//Variables de la persona 
-		String name,surname,NIF;
-		int age;
-		double height;
->>>>>>> 9798f9d34c85fb23566c938c5900b6ccd7258ab7
+		String name,surname,NIF,age,height;
 		//Variable para escribir en el fichero 
 		PrintStream ps = null;
 		//Pedimos los datos 
@@ -36,14 +28,10 @@ public class PedirDatosPersona {
 			System.out.print("Intro NIF:");
 			NIF =recogerCadenas();
 			System.out.print("Intro Edad:");
-			age=recogerEnteros();
+			age=recogerCadenas();
 			System.out.print("Intro Altura:");
-<<<<<<< HEAD
 			height=recogerCadenas();
-=======
-			height=recogerDoubles();
-			
->>>>>>> 9798f9d34c85fb23566c938c5900b6ccd7258ab7
+
 			//Escribimos los datos en el fichero
 			try {
 				ps = new PrintStream(new FileOutputStream(x,true));
@@ -68,18 +56,4 @@ public class PedirDatosPersona {
 		String cadena = scan.next();
 		return cadena;
 	}
-	public static int recogerEnteros() {
-		Scanner scan = new Scanner(System.in);
-		int num = scan.nextInt();
-		return num;
-	}
-<<<<<<< HEAD
-	
-=======
-	public static double recogerDoubles() {
-		Scanner scan = new Scanner(System.in);
-		double num = scan.nextDouble();
-		return num;
-	}
->>>>>>> 9798f9d34c85fb23566c938c5900b6ccd7258ab7
 }
