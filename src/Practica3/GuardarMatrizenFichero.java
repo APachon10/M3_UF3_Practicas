@@ -13,19 +13,11 @@ public class GuardarMatrizenFichero {
 		final int filas =10;
 		//Le pedimos al usuario si quiere generar la Matriz a traves del fichero por defecto o generar una Aleatoria
 		//Para generar la Aleatoria introduce Aleatoria y para Generar la por defecto introduce Por Defecto
-		
-		System.out.println("Quieres generar la Matriz a a partir del archivo por defecto o crear una Matriz aleatoria??");
-		String pregunta = recogerCadena();
-		
-		if (pregunta.equalsIgnoreCase("Aleatoria")) {
-			File archivo_creado = new File("Matriz.txt");
-			gc.escribirMatriz(archivo_creado,columnas,filas);
-		}else if (pregunta.equalsIgnoreCase("Defecto")) {
-			File f =new File("Matriz.txt");
-			File f2 = new File("MatrizPorDefecto.txt");
-			gc.escribirMatrizporDefecto(f,f2,columnas, filas);
-		}
-		
+
+		File archivo_creado = new File("Matriz.txt");
+		gc.escribirMatriz(archivo_creado,columnas,filas);
+
+
 	}
 	public File escribirMatriz(File x,int n,int m ) {
 		PrintStream ps = null;
@@ -43,21 +35,6 @@ public class GuardarMatrizenFichero {
 		} catch (Exception e) {
 			System.out.println("Error!: "+e);
 			e.printStackTrace();
-		}
-		return x;
-	}
-	public File escribirMatrizporDefecto(File x,File v,int n,int m) {
-		int MatrizDefecto  [][] = new int [n][m];
-		try {
-			Scanner scan = new Scanner(v);
-			PrintStream ps = new PrintStream(x);
-			while (scan.hasNext()) {
-				String texto  =scan.nextLine();
-				System.out.println(texto);
-				ps.println(texto+" ");
-			}
-		} catch (Exception e) {
-			System.out.println("Error! : "+e);
 		}
 		return x;
 	}

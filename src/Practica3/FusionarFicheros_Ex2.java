@@ -12,33 +12,22 @@ public class FusionarFicheros_Ex2 {
 		programa.fusionarficheros(v1, v2);
 	}
 	public File fusionarficheros(File f, File v ) {
+		Scanner scan_parells  =null;
+		Scanner scan_senars =null;
 		//Creamos el fichero donde vamos a combianr los 2 ficheros 
 		File resultado = new File("1a100.txt");
 		PrintStream ps = null;
 		//Leemos ambos Ficheros 
-		leerFichero(f);
-		leerFichero(v);
+		
 		try {
 			ps = new PrintStream(resultado);
+			scan_parells = new Scanner(v);
+			scan_senars = new Scanner(f);
 			
 		} catch (Exception e) {
 			System.out.println("Error!! "+e);
 		}
 		//Devolvemos el fichero que hemos creado 
 		return resultado;
-	}
-	public void leerFichero(File x){
-		Scanner scan = null;
-		String lineas ="";
-		try {
-			scan = new Scanner(x);
-			while (scan.hasNext()) {
-				lineas = scan.next();
-			}
-			
-		} catch (Exception e) {
-			System.out.println("Error! : " +e);
-		}
-		scan.close();
 	}
 }
