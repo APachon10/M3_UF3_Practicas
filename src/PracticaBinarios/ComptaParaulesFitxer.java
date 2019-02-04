@@ -29,7 +29,7 @@ public class ComptaParaulesFitxer {
 						cont ++;
 					}
 				}
-				System.out.println("Contador : "+cont);
+				System.out.println("La linea tiene "+cont+" palabras");
 			}
 
 		}catch (Exception e) {
