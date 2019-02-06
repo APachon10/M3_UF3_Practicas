@@ -26,7 +26,6 @@ public class GenerarFichero {
 				byte frase2 [] = lineas[i].getBytes();
 
 				raf.writeInt(frase2.length);
-				raf.writeBytes(" ");
 				raf.writeBytes(lineas[i]);
 			}
 			System.out.println("Fichero Escrito ");
@@ -61,7 +60,8 @@ public class GenerarFichero {
 
 			raf.close();
 		} catch (Exception e) {
-			System.out.println("Error tractant fitxer: " + e);
+			System.out.println("Error: " + e);
+			e.printStackTrace();
 		}
 	}
 	public static String recogerCadenas() {
