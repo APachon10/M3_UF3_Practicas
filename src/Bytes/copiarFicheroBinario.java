@@ -20,6 +20,8 @@ public class copiarFicheroBinario {
 				File des = new File(destino);
 				if (!des.exists()) {
 					cp.copiarfichero(o,des);
+				}else {
+					System.out.println("El fichero ya existe ");
 				}
 			}
 		}else {
@@ -28,12 +30,22 @@ public class copiarFicheroBinario {
 	}
 	public File copiarfichero(File or,File des) {
 		try {
-			RandomAccessFile raf = new RandomAccessFile(or, "w");
+			RandomAccessFile raf = new RandomAccessFile(or, "r");
 			RandomAccessFile raf2 = new RandomAccessFile(des, "rw");
+			
+			//Leemos los datos del ficheros y los  escribimos en el otro fichero 
+			int mida = (int) or.length();
+			for (int i = 0; i < mida; i++) {
+				byte datos = raf.readByte();
+				raf2.writeByte(datos);
+			}
+			raf.close();
+			raf2.close();
 		} catch (Exception e) {
 			System.out.println("Error: "+e);
 			e.printStackTrace();
 		}
+		return des;
 	}
 	public static String recogerCadenas() {
 		Scanner scan = new Scanner(System.in);
